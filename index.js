@@ -4,7 +4,7 @@ const Intern = require('./lib/intern');
 const inquirer = require('inquirer');
 const fs = require('fs');
 const generateHTML = require('./generatehtml');
-const getRoster = [];
+const roster = [];
 
 const createManager = () => {
     inquirer.prompt(
@@ -38,8 +38,12 @@ const createManager = () => {
             }
         ])
         .then(response => {
+            const manager = new Manager(response.managerName, response.managerId, response.managerEmail)
+            roster.push(manager);
+            chooseEmployee();
             // creates the manager card in the html and then invokes chooseEmployee()
         })
+
 }
 
 const chooseEmployee = () => {
@@ -47,7 +51,7 @@ const chooseEmployee = () => {
         {
             type: 'list',
             message: 'Which type of team member would you like to add?',
-            option: ['Engineer', 'Intern'],
+            choices: ['Engineer', 'Intern'],
             name: 'choice'
         }
     ])
