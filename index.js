@@ -2,8 +2,10 @@ const manager = require('./lib/manager');
 const engineer = require('./lib/engineer');
 const intern = require('./lib/intern');
 const inquirer = require('inquirer');
+const fs = require('fs');
+const generateHTML = require('./generatehtml');
 
-function createManager() {
+const createManager = () => {
     inquirer.prompt(
         [
             {
@@ -34,10 +36,11 @@ function createManager() {
                 name: 'office'
             }
         ])
+        .then(response => )
 }
 
 
-function createEngineer() {
+const createEngineer = () => {
     inquirer.prompt([
         {
             type: 'input',
@@ -63,7 +66,7 @@ function createEngineer() {
 }
 
 
-function createIntern() {
+const createIntern = () => {
     inquirer.prompt([
         {
             type: 'input',
