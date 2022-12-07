@@ -39,6 +39,17 @@ const createManager = () => {
         .then(response => )
 }
 
+const promptEmployee = () => {
+    inquirer.prompt([
+        {
+            type: 'list',
+            message: 'Which type of team member would you like to add?',
+            option: ['Engineer', 'Intern'],
+            name: 'choice'
+        }
+    ])
+        .then()
+}
 
 const createEngineer = () => {
     inquirer.prompt([
