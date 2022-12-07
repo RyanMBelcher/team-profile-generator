@@ -1,0 +1,5 @@
+function generateHTML(data) {
+    return `
+    
+    `
+}

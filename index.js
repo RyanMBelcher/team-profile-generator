@@ -1,9 +1,10 @@
-const manager = require('./lib/manager');
-const engineer = require('./lib/engineer');
-const intern = require('./lib/intern');
+const Manager = require('./lib/manager');
+const Engineer = require('./lib/engineer');
+const Intern = require('./lib/intern');
 const inquirer = require('inquirer');
 const fs = require('fs');
 const generateHTML = require('./generatehtml');
+const getRoster = [];
 
 const createManager = () => {
     inquirer.prompt(
@@ -36,10 +37,12 @@ const createManager = () => {
                 name: 'office'
             }
         ])
-        .then(response => )
+        .then(response => {
+            // creates the manager card in the html and then invokes chooseEmployee()
+        })
 }
 
-const promptEmployee = () => {
+const chooseEmployee = () => {
     inquirer.prompt([
         {
             type: 'list',
@@ -48,7 +51,15 @@ const promptEmployee = () => {
             name: 'choice'
         }
     ])
-        .then()
+        .then(response => {
+            if (response.choice === 'Engineer') {
+                createEngineer()
+            } else if (response.choice === 'Intern') {
+                createIntern()
+            } else {
+                return 'I have nothing more to add.'
+            }
+        })
 }
 
 const createEngineer = () => {
@@ -100,4 +111,6 @@ const createIntern = () => {
             name: 'internSchool'
         }
     ])
-} 
+}
+
+createManager()
