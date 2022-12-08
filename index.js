@@ -15,13 +15,6 @@ const createManager = () => {
                 type: 'input',
                 message: `What is your team Manager's name?`,
                 name: 'managerName',
-                validate: managerInput => {
-                    if (managerInput) {
-                        return true;
-                    } else {
-                        console.log(`You must enter your team manager's name!`);
-                    }
-                }
             },
             {
                 type: 'number',
