@@ -4,7 +4,7 @@ const Intern = require('./lib/intern');
 const inquirer = require('inquirer');
 const fs = require('fs');
 const generateHTML = require('./generatehtml');
-const manager = null;
+let manager = null;
 const engineer = [];
 const intern = [];
 
@@ -134,7 +134,6 @@ const createIntern = () => {
 }
 
 const createTeam = () => {
-    console.log(roster);
     let htmlFile = generateHTML(manager, engineer, intern)
     fs.writeFile('index.html', htmlFile, (err) =>
         err ? console.error(err) : console.log('File created!')
