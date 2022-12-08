@@ -11,4 +11,4 @@ describe('Employee', () => {
         expect(actual.email).toEqual(email);
         expect(actual.getRole()).toEqual('Employee');
     })
-})
+});
