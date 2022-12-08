@@ -1,4 +1,4 @@
-const { mainModule } = require('process');
+
 
 function generateHTML(manager, engineer, intern) {
     // console.log('data in generate html', data);
@@ -18,10 +18,10 @@ function generateHTML(manager, engineer, intern) {
             crossorigin='anonymous' referrerpolicy='no-referrer' />
         <title>Team Awesome</title>
     </head>
-    <body>
     <nav id='custom-nav' class='navbar navbar-light d-flex justify-content-center'>
         <h1>Team Awesome</h1>
     </nav>
+    <body>
     <div id='custom-div' class='row row-cols-1 row-cols-md-3 g-4 d-flex justify-content-center'>
     ${createMangerCard(manager)}
     ${createEngineerCards(engineer)}
@@ -45,10 +45,11 @@ function createMangerCard(manager) {
         <div class='card-body custom-body'>
             <p class='card-text'>
                 ID: ${manager.id} <br>
-                Email: ${manager.email} <br>
+                Email:<a href='mailto:${manager.email}'>${manager.email}</a><br>
                 Office Number: ${manager.officeNumber}
             </p>
         </div>
+     </div>
     `
 }
 
@@ -57,7 +58,7 @@ function createEngineerCards(engineers) {
     let cards = ''
     engineers.forEach(engineer => {
         cards += `
-        <div id='engineer-card' class='row card text-dark bg-light m-3 shadow p-3 mb-5 bg-body rounded'
+    <div id='engineer-card' class='row card text-dark bg-light m-3 shadow p-3 mb-5 bg-body rounded'
         style='max-width: 18rem;'>
         <div class='card-header custom-header'>
             Name: ${engineer.name} <br>
@@ -66,8 +67,8 @@ function createEngineerCards(engineers) {
         <div class='card-body custom-body'>
             <p class='card-text'>
                 ID: ${engineer.id} <br>
-                Email: ${engineer.email} <br>
-                GitHub: ${engineer.github}
+                Email: <a href='mailto:${engineer.email}'>${engineer.email}</a> <br>
+                GitHub: <a href='https://github.com/${engineer.github}'>${engineer.github}</a>
             </p>
         </div>
     </div>
@@ -80,17 +81,17 @@ function createInternCards(interns) {
     let cards = ''
     interns.forEach(intern => {
         cards += `
-        <div id='engineer-card' class='row card text-dark bg-light m-3 shadow p-3 mb-5 bg-body rounded'
+    <div id='intern-card' class='row card text-dark bg-light m-3 shadow p-3 mb-5 bg-body rounded'
         style='max-width: 18rem;'>
         <div class='card-header custom-header'>
             Name: ${intern.name} <br>
-            <i class='fa-solid fa-code'></i> Position: Engineer
+            <i class='fa-solid fa-mug-saucer'></i> Position: Intern
         </div>
         <div class='card-body custom-body'>
             <p class='card-text'>
                 ID: ${intern.id} <br>
-                Email: ${intern.email} <br>
-                GitHub: ${intern.school}
+                Email: <a href='mailto:${intern.email}'>${intern.email}</a> <br>
+                School: ${intern.school}
             </p>
         </div>
     </div>
