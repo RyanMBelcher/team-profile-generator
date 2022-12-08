@@ -44,8 +44,23 @@ function createEngineerCards(engineer) {
     `
 }
 
-function createInternCards(card) {
-
+function createInternCards(intern) {
+    return `
+    <div id='intern-card' class='row card text-dark bg-light m-3 shadow p-3 mb-5 bg-body rounded'
+        style='max-width: 18rem;'>
+        <div class='card-header custom-header'>
+            Name: ${intern.internName} <br>
+            <i class='fa-solid fa-mug-saucer'></i> Position: Intern
+        </div>
+        <div class='card-body custom-body'>
+            <p class='card-text'>
+                ID: ${intern.internId} <br>
+                Email: ${intern.internEmail} <br>
+                School:${intern.school}
+            </p>
+        </div>
+    </div>
+`
 }
 
 module.exports = generateHTML;
