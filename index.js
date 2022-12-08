@@ -4,7 +4,9 @@ const Intern = require('./lib/intern');
 const inquirer = require('inquirer');
 const fs = require('fs');
 const generateHTML = require('./generatehtml');
-const roster = [];
+const manager = null;
+const engineer = [];
+const intern = [];
 
 const createManager = () => {
     inquirer.prompt(
@@ -38,8 +40,8 @@ const createManager = () => {
             }
         ])
         .then(response => {
-            const manager = new Manager(response.managerName, response.managerId, response.managerEmail, response.officeNumber);
-            roster.push(manager);
+            const newManager = new Manager(response.managerName, response.managerId, response.managerEmail, response.officeNumber);
+            manager = newManager;
             chooseEmployee();
         })
 
@@ -102,8 +104,8 @@ const createEngineer = () => {
         }
     ])
         .then(response => {
-            const engineer = new Engineer(response.engineerName, response.engineerId, response.engineerEmail, response.github);
-            roster.push(engineer);
+            const newEngineer = new Engineer(response.engineerName, response.engineerId, response.engineerEmail, response.github);
+            engineer.push(newEngineer);
             chooseEmployee();
         })
 }
@@ -132,14 +134,15 @@ const createIntern = () => {
         }
     ])
         .then(response => {
-            const intern = new Intern(response.internName, response.internId, response.internEmail, response.school);
-            roster.push(intern);
+            const newIntern = new Intern(response.internName, response.internId, response.internEmail, response.school);
+            intern.push(newIntern);
             chooseEmployee();
         })
 }
 
-function createTeam(response) {
-    let htmlFile = generateHTML(response)
+const createTeam = () => {
+    console.log(roster);
+    let htmlFile = generateHTML(manager, engineer, intern)
     fs.writeFile('index.html', htmlFile, (err) =>
         err ? console.error(err) : console.log('File created!')
     );
