@@ -8,6 +8,7 @@ let manager = null;
 const engineer = [];
 const intern = [];
 
+// Prompts users for manger information and stores that information on the manager variable
 const createManager = () => {
     inquirer.prompt(
         [
@@ -40,6 +41,9 @@ const createManager = () => {
 
 }
 
+// Give the user the ability to choose between an engineer, an intern, or no other team members. If they choose 
+// engineer the create engineer function is invoked, if they choose intern the create intern function is invoked,
+// if they choose neither, the create team function is invoked.
 const chooseEmployee = () => {
     inquirer.prompt([
         {
@@ -49,14 +53,6 @@ const chooseEmployee = () => {
             name: 'choice'
         }
     ])
-        // .then(response => {
-        //     if (response.choice === 'Engineer') {
-        //         createEngineer()
-        //     } else if (response.choice === 'Intern') {
-        //         createIntern()
-        //     } else {
-        //         return 'I have nothing more to add.'
-        //     }
         .then(response => {
             switch (response.choice) {
                 case 'Engineer':
@@ -73,6 +69,7 @@ const chooseEmployee = () => {
         })
 }
 
+// Prompts the user for engineer information and stores it to the engineer array
 const createEngineer = () => {
     inquirer.prompt([
         {
@@ -103,6 +100,7 @@ const createEngineer = () => {
         })
 }
 
+// Prompts the user for engineer information and stores it to the intern array
 const createIntern = () => {
     inquirer.prompt([
         {
@@ -133,6 +131,7 @@ const createIntern = () => {
         })
 }
 
+// Creates the team and generates the html page with the information
 const createTeam = () => {
     let htmlFile = generateHTML(manager, engineer, intern)
     fs.writeFile('index.html', htmlFile, (err) =>
@@ -140,4 +139,5 @@ const createTeam = () => {
     );
 }
 
+// This is the invoking of the first function
 createManager()

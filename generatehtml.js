@@ -1,7 +1,5 @@
-
-
+// Boiler plate html and invoking of other three functions in order to add them to the page
 function generateHTML(manager, engineer, intern) {
-    // console.log('data in generate html', data);
     return `
     <!DOCTYPE html>
     <html lang='en'>
@@ -33,6 +31,7 @@ function generateHTML(manager, engineer, intern) {
     `
 }
 
+// Takes the information for the manager and adds it to the html manager card
 function createMangerCard(manager) {
     console.log(manager)
     return `
@@ -53,6 +52,7 @@ function createMangerCard(manager) {
     `
 }
 
+// Takes the information for the engineer and adds it to the html engineer card
 function createEngineerCards(engineers) {
     console.log(engineers);
     let cards = ''
@@ -77,6 +77,7 @@ function createEngineerCards(engineers) {
     return cards;
 }
 
+// Takes the information for the intern and adds it to the html intern card
 function createInternCards(interns) {
     let cards = ''
     interns.forEach(intern => {
