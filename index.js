@@ -34,14 +34,13 @@ const createManager = () => {
             {
                 type: 'number',
                 message: `What is your team manager's office number?`,
-                name: 'office'
+                name: 'officeNumber'
             }
         ])
         .then(response => {
-            const manager = new Manager(response.managerName, response.managerId, response.managerEmail)
+            const manager = new Manager(response.managerName, response.managerId, response.managerEmail, response.officeNumber);
             roster.push(manager);
             chooseEmployee();
-            // creates the manager card in the html and then invokes chooseEmployee()
         })
 
 }
@@ -51,18 +50,31 @@ const chooseEmployee = () => {
         {
             type: 'list',
             message: 'Which type of team member would you like to add?',
-            choices: ['Engineer', 'Intern'],
+            choices: ['Engineer', 'Intern', `I have no other team members`],
             name: 'choice'
         }
     ])
+        // .then(response => {
+        //     if (response.choice === 'Engineer') {
+        //         createEngineer()
+        //     } else if (response.choice === 'Intern') {
+        //         createIntern()
+        //     } else {
+        //         return 'I have nothing more to add.'
+        //     }
         .then(response => {
-            if (response.choice === 'Engineer') {
-                createEngineer()
-            } else if (response.choice === 'Intern') {
-                createIntern()
-            } else {
-                return 'I have nothing more to add.'
-            }
+            switch (response.choice) {
+                case 'Engineer':
+                    createEngineer();
+                    break;
+                case 'Intern':
+                    createIntern();
+                    break;
+                case 'I have no other team members':
+                    createTeam();
+                // something will go here
+            };
+
         })
 }
 
@@ -86,11 +98,15 @@ const createEngineer = () => {
         {
             type: 'input',
             message: `What is your engineer's GitHub?`,
-            name: 'engineerGithub'
+            name: 'github'
         }
     ])
+        .then(response => {
+            const engineer = new Engineer(response.engineerName, response.engineerId, response.engineerEmail, response.github);
+            roster.push(engineer);
+            chooseEmployee();
+        })
 }
-
 
 const createIntern = () => {
     inquirer.prompt([
@@ -107,14 +123,26 @@ const createIntern = () => {
         {
             type: 'input',
             message: `What is your intern's email address?`,
-            name: 'interEmail'
+            name: 'internEmail'
         },
         {
             type: 'input',
             message: `What is your intern's school?`,
-            name: 'internSchool'
+            name: 'school'
         }
     ])
+        .then(response => {
+            const intern = new Intern(response.internName, response.internId, response.internEmail, response.school);
+            roster.push(intern);
+            chooseEmployee();
+        })
+}
+
+function createTeam(response) {
+    let htmlFile = generateHTML(response)
+    fs.writeFile('index.html', htmlFile, (err) =>
+        err ? console.error(err) : console.log('File created!')
+    );
 }
 
 createManager()
