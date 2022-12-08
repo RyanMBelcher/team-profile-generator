@@ -26,7 +26,22 @@ function createMangerCard(manager) {
 }
 
 function createEngineerCards(engineer) {
-
+    return `
+    <div id='engineer-card' class='row card text-dark bg-light m-3 shadow p-3 mb-5 bg-body rounded'
+    style='max-width: 18rem;'>
+    <div class='card-header custom-header'>
+        Name: ${engineer.engineerName} <br>
+        <i class='fa-solid fa-code'></i> Position: Engineer
+    </div>
+    <div class='card-body custom-body'>
+        <p class='card-text'>
+            ID: ${engineer.engineerId} <br>
+            Email: ${engineer.engineerEmail} <br>
+            GitHub: ${engineer.github}
+        </p>
+    </div>
+</div>
+    `
 }
 
 function createInternCards(card) {
