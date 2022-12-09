@@ -14,23 +14,53 @@ const createManager = () => {
         [
             {
                 type: 'input',
-                message: `What is your team Manager's name?`,
+                message: `What is your team manager's name?`,
                 name: 'managerName',
+                validate: managerNameInput => {
+                    if (typeof managerNameInput != 'string' || !managerNameInput.trim().length) {
+                        throw new Error(`Please enter your manager's name!`);
+                    } else {
+                        return true;
+                    }
+                }
             },
             {
                 type: 'number',
                 message: `What is your team manager's ID number?`,
-                name: 'managerId'
+                name: 'managerId',
+                validate: managerIdInput => {
+                    if (typeof managerIdInput !== 'number' || isNaN(managerIdInput) || managerIdInput < 0) {
+                        throw new Error('Please enter a valid ID number!')
+                    } else {
+                        return true;
+                    }
+                }
             },
             {
                 type: 'input',
                 message: `What is your team manager's email address?`,
-                name: 'managerEmail'
+                name: 'managerEmail',
+                validate: managerEmailInput => {
+                    const regex = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
+                    const isValid = managerEmailInput.match(regex);
+                    if (isValid) {
+                        return true;
+                    } else {
+                        throw new Error('Please enter a valid email address!')
+                    }
+                }
             },
             {
                 type: 'number',
                 message: `What is your team manager's office number?`,
-                name: 'officeNumber'
+                name: 'officeNumber',
+                validate: officeNumberInput => {
+                    if (typeof officeNumberInput !== 'number' || isNaN(officeNumberInput) || officeNumberInput < 0) {
+                        throw new Error('Please enter a valid office number!')
+                    } else {
+                        return true;
+                    }
+                }
             }
         ])
         .then(response => {
@@ -75,22 +105,52 @@ const createEngineer = () => {
         {
             type: 'input',
             message: `What is your engineer's name?`,
-            name: 'engineerName'
+            name: 'engineerName',
+            validate: engineerNameInput => {
+                if (typeof engineerNameInput != 'string' || !engineerNameInput.trim().length) {
+                    throw new Error(`Please enter your engineer's name!`);
+                } else {
+                    return true;
+                }
+            }
         },
         {
             type: 'number',
             message: `What is your engineer's ID number?`,
-            name: 'engineerId'
+            name: 'engineerId',
+            validate: engineerIdInput => {
+                if (typeof engineerIdInput !== 'number' || isNaN(engineerIdInput) || engineerIdInput < 0) {
+                    throw new Error('Please enter a valid ID number!')
+                } else {
+                    return true;
+                }
+            }
         },
         {
             type: 'input',
             message: `What is your engineer's email address?`,
-            name: 'engineerEmail'
+            name: 'engineerEmail',
+            validate: engineerEmailInput => {
+                const regex = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
+                const isValid = engineerEmailInput.match(regex);
+                if (isValid) {
+                    return true;
+                } else {
+                    throw new Error('Please enter a valid email address!')
+                }
+            }
         },
         {
             type: 'input',
-            message: `What is your engineer's GitHub?`,
-            name: 'github'
+            message: `What is your engineer's GitHub username?`,
+            name: 'github',
+            validate: githubInput => {
+                if (typeof githubInput != 'string' || !githubInput.trim().length) {
+                    throw new Error(`Please enter your GitHub username!`);
+                } else {
+                    return true;
+                }
+            }
         }
     ])
         .then(response => {
@@ -106,22 +166,51 @@ const createIntern = () => {
         {
             type: 'input',
             message: `What is your intern's name?`,
-            name: 'internName'
+            name: 'internName',
+            validate: internNameInput => {
+                if (typeof internNameInput != 'string' || !internNameInput.trim().length) {
+                    throw new Error(`Please enter your intern's name!`);
+                } else {
+                    return true;
+                }
+            }
         },
         {
             type: 'number',
             message: `What is your intern's ID number?`,
-            name: 'internId'
+            name: 'internId',
+            validate: internIdInput => {
+                if (typeof internIdInput !== 'number' || isNaN(internIdInput) || internIdInput < 0) {
+                    throw new Error('Please enter a valid ID number!')
+                } else {
+                    return true;
+                }
+            }
         },
         {
             type: 'input',
             message: `What is your intern's email address?`,
-            name: 'internEmail'
+            name: 'internEmail',
+            validate: internEmailInput => {
+                const regex = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
+                const isValid = internEmailInput.match(regex);
+                if (isValid) {
+                    return true;
+                } else {
+                    throw new Error('Please enter a valid email address!')
+                }
+            }
         },
         {
             type: 'input',
             message: `What is your intern's school?`,
-            name: 'school'
+            name: 'school',
+            validate: schoolInput => {
+                if (typeof schoolInput !== 'string' || !schoolInput.trim().length) {
+                    throw new Error(`Please enter your intern's school!`)
+                }
+
+            }
         }
     ])
         .then(response => {
