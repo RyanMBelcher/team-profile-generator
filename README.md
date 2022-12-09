@@ -12,6 +12,10 @@ The user will need to have node.js installed on their machine. In the terminal, 
 
 ## Usage
 
+Video walk through:
+
+https://drive.google.com/file/d/1S_MqaTNiQk-ncaBoye1ItCDbQFi1Yn9b/view 
+
 ![screenshot of app](./images/app-screenshot.png)
 
 ## License
