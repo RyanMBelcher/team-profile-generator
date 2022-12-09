@@ -208,8 +208,9 @@ const createIntern = () => {
             validate: schoolInput => {
                 if (typeof schoolInput !== 'string' || !schoolInput.trim().length) {
                     throw new Error(`Please enter your intern's school!`)
+                } else {
+                    return true;
                 }
-
             }
         }
     ])
@@ -223,7 +224,7 @@ const createIntern = () => {
 // Creates the team and generates the html page with the information
 const createTeam = () => {
     let htmlFile = generateHTML(manager, engineer, intern)
-    fs.writeFile('index.html', htmlFile, (err) =>
+    fs.writeFile('./dist/index.html', htmlFile, (err) =>
         err ? console.error(err) : console.log('File created!')
     );
 }

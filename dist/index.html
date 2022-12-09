@@ -1,6 +1,4 @@
-// Boiler plate html and invoking of other three functions in order to add them to the page
-function generateHTML(manager, engineer, intern) {
-    return `
+
     <!DOCTYPE html>
     <html lang='en'>
     
@@ -21,82 +19,56 @@ function generateHTML(manager, engineer, intern) {
     </nav>
     <body>
     <div id='custom-div' class='row row-cols-1 row-cols-md-3 g-4 d-flex justify-content-center'>
-    ${createMangerCard(manager)}
-    ${createEngineerCards(engineer)}
-    ${createInternCards(intern)}
-    </div>
-    </body>
-
-    </html>
-    `
-}
-
-// Takes the information for the manager and adds it to the html manager card
-function createMangerCard(manager) {
-    return `
+    
     <div id='manager-card' class='row card text-dark bg-light m-3 shadow p-3 mb-5 bg-body rounded'
         style='max-width: 18rem;'>
         <div class='card-header custom-header'>
-            Name: ${manager.name} <br>
+            Name: Bob <br>
             <i class='fa-solid fa-money-bill'></i> Position: Manager
         </div>
         <div class='card-body custom-body'>
             <p class='card-text'>
-                ID: ${manager.id} <br>
-                Email:<a href='mailto:${manager.email}'>${manager.email}</a><br>
-                Office Number: ${manager.officeNumber}
+                ID: 1 <br>
+                Email:<a href='mailto:bob@email.com'>bob@email.com</a><br>
+                Office Number: 1
             </p>
         </div>
      </div>
-    `
-}
-
-// Takes the information for the engineer and adds it to the html engineer card
-function createEngineerCards(engineers) {
-    let cards = ''
-    engineers.forEach(engineer => {
-        cards += `
+    
+    
     <div id='engineer-card' class='row card text-dark bg-light m-3 shadow p-3 mb-5 bg-body rounded'
         style='max-width: 18rem;'>
         <div class='card-header custom-header'>
-            Name: ${engineer.name} <br>
+            Name: Joe <br>
             <i class='fa-solid fa-code'></i> Position: Engineer
         </div>
         <div class='card-body custom-body'>
             <p class='card-text'>
-                ID: ${engineer.id} <br>
-                Email: <a href='mailto:${engineer.email}'>${engineer.email}</a> <br>
-                GitHub: <a href='https://github.com/${engineer.github}' target='_blank'>${engineer.github}</a>
+                ID: 2 <br>
+                Email: <a href='mailto:joe@email.com'>joe@email.com</a> <br>
+                GitHub: <a href='https://github.com/joe'>joe</a>
             </p>
         </div>
     </div>
-        `
-    });
-    return cards;
-}
-
-// Takes the information for the intern and adds it to the html intern card
-function createInternCards(interns) {
-    let cards = ''
-    interns.forEach(intern => {
-        cards += `
+        
+    
     <div id='intern-card' class='row card text-dark bg-light m-3 shadow p-3 mb-5 bg-body rounded'
         style='max-width: 18rem;'>
         <div class='card-header custom-header'>
-            Name: ${intern.name} <br>
+            Name: Sue <br>
             <i class='fa-solid fa-mug-saucer'></i> Position: Intern
         </div>
         <div class='card-body custom-body'>
             <p class='card-text'>
-                ID: ${intern.id} <br>
-                Email: <a href='mailto:${intern.email}'>${intern.email}</a> <br>
-                School: ${intern.school}
+                ID: 3 <br>
+                Email: <a href='mailto:sue@email.com'>sue@email.com</a> <br>
+                School: Penn
             </p>
         </div>
     </div>
-        `
-    });
-    return cards;
-}
+        
+    </div>
+    </body>
 
-module.exports = generateHTML;
+    </html>
+    

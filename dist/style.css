@@ -1,0 +1,33 @@
+body {
+    height: 100vh;
+    width: 100vw;
+    background-color: #ede9ff;
+}
+
+#custom-nav {
+    background-color: #3f3a57;
+    color: #ede9ff;
+    text-align: center;
+}
+
+#custom-div {
+    margin: auto;
+}
+
+.custom-header {
+    background-color: #dbd3ff;
+    color: #3f3a57;
+}
+
+.custom-body {
+    background-color: #5a527d;
+    color: #fff;
+}
+
+a {
+    color: #fff;
+}
+
+a:hover {
+    color: #dbd3ff;
+}
